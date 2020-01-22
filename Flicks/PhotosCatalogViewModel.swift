@@ -1,14 +1,14 @@
 //
-//  PhotoCatalogViewModel.swift
+//  PhotosCatalogViewModel.swift
 //  Flicks
 //
 //  Created by Ricardo Pereira on 22/01/2020.
 //  Copyright © 2020 Ricardo Pereira. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct PhotoCatalogViewModel {
+final class PhotosCatalogViewModel {
 
     #warning("Testing purposes only")
     let photos: [Photo] = [
@@ -23,5 +23,20 @@ struct PhotoCatalogViewModel {
         .init(url: URL(string: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjExMTk5N30")!),
         .init(url: URL(string: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjExMTk5N30")!),
     ]
+
+    let coordinator: PhotosCatalogCoordinator
+    private let dataProvider: PhotosCatalogDataProvider
+
+    init(coordinator: PhotosCatalogCoordinator, dataProvider: PhotosCatalogDataProvider) {
+        self.coordinator = coordinator
+        self.dataProvider = dataProvider
+    }
+
+    func menuContext(for photo: Photo) -> UIMenu {
+        let shareAction = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { [weak self] action in
+            self?.coordinator.presentShareActivity(for: photo)
+        }
+        return UIMenu(title: "Options", children: [shareAction])
+    }
 
 }

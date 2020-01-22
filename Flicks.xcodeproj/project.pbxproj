@@ -16,8 +16,17 @@
 		D70BA58A23D857690023A698 /* PhotosCatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA58923D857690023A698 /* PhotosCatalogViewController.swift */; };
 		D70BA58C23D8D86C0023A698 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA58B23D8D86C0023A698 /* Photo.swift */; };
 		D70BA58E23D8D87B0023A698 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA58D23D8D87B0023A698 /* PhotoCell.swift */; };
-		D70BA59023D8D8870023A698 /* PhotoCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA58F23D8D8870023A698 /* PhotoCatalogViewModel.swift */; };
+		D70BA59023D8D8870023A698 /* PhotosCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA58F23D8D8870023A698 /* PhotosCatalogViewModel.swift */; };
 		D70BA59223D8D9080023A698 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59123D8D9080023A698 /* PhotoViewController.swift */; };
+		D70BA59423D8F2EF0023A698 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59323D8F2EF0023A698 /* RootCoordinator.swift */; };
+		D70BA59623D8FFCA0023A698 /* PhotosCatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59523D8FFCA0023A698 /* PhotosCatalogCoordinator.swift */; };
+		D70BA59823D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59723D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift */; };
+		D70BA59A23D902670023A698 /* PhotosCatalogDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59923D902670023A698 /* PhotosCatalogDataProvider.swift */; };
+		D70BA59C23D9027F0023A698 /* PhotoLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59B23D9027F0023A698 /* PhotoLocalStore.swift */; };
+		D70BA59E23D902910023A698 /* PhotoRealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59D23D902910023A698 /* PhotoRealmDB.swift */; };
+		D70BA5A023D902B00023A698 /* PhotoRemoteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59F23D902B00023A698 /* PhotoRemoteStore.swift */; };
+		D70BA5A223D902BA0023A698 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA5A123D902BA0023A698 /* UnsplashAPI.swift */; };
+		D70BA5A423D902DD0023A698 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA5A323D902DD0023A698 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +53,17 @@
 		D70BA58923D857690023A698 /* PhotosCatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogViewController.swift; sourceTree = "<group>"; };
 		D70BA58B23D8D86C0023A698 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		D70BA58D23D8D87B0023A698 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
-		D70BA58F23D8D8870023A698 /* PhotoCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCatalogViewModel.swift; sourceTree = "<group>"; };
+		D70BA58F23D8D8870023A698 /* PhotosCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogViewModel.swift; sourceTree = "<group>"; };
 		D70BA59123D8D9080023A698 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		D70BA59323D8F2EF0023A698 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		D70BA59523D8FFCA0023A698 /* PhotosCatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogCoordinator.swift; sourceTree = "<group>"; };
+		D70BA59723D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogNavigationCoordinator.swift; sourceTree = "<group>"; };
+		D70BA59923D902670023A698 /* PhotosCatalogDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogDataProvider.swift; sourceTree = "<group>"; };
+		D70BA59B23D9027F0023A698 /* PhotoLocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLocalStore.swift; sourceTree = "<group>"; };
+		D70BA59D23D902910023A698 /* PhotoRealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRealmDB.swift; sourceTree = "<group>"; };
+		D70BA59F23D902B00023A698 /* PhotoRemoteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRemoteStore.swift; sourceTree = "<group>"; };
+		D70BA5A123D902BA0023A698 /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
+		D70BA5A323D902DD0023A698 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +107,19 @@
 			children = (
 				D70BA56723D7C4DE0023A698 /* AppDelegate.swift */,
 				D70BA56923D7C4DE0023A698 /* SceneDelegate.swift */,
+				D70BA59323D8F2EF0023A698 /* RootCoordinator.swift */,
 				D70BA56B23D7C4DE0023A698 /* ViewController.swift */,
 				D70BA58923D857690023A698 /* PhotosCatalogViewController.swift */,
+				D70BA58F23D8D8870023A698 /* PhotosCatalogViewModel.swift */,
+				D70BA59523D8FFCA0023A698 /* PhotosCatalogCoordinator.swift */,
+				D70BA59723D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift */,
+				D70BA59923D902670023A698 /* PhotosCatalogDataProvider.swift */,
+				D70BA59B23D9027F0023A698 /* PhotoLocalStore.swift */,
+				D70BA59D23D902910023A698 /* PhotoRealmDB.swift */,
+				D70BA59F23D902B00023A698 /* PhotoRemoteStore.swift */,
+				D70BA5A123D902BA0023A698 /* UnsplashAPI.swift */,
+				D70BA5A323D902DD0023A698 /* User.swift */,
 				D70BA59123D8D9080023A698 /* PhotoViewController.swift */,
-				D70BA58F23D8D8870023A698 /* PhotoCatalogViewModel.swift */,
 				D70BA58D23D8D87B0023A698 /* PhotoCell.swift */,
 				D70BA58B23D8D86C0023A698 /* Photo.swift */,
 				D70BA57023D7C4E20023A698 /* Assets.xcassets */,
@@ -211,14 +238,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D70BA59023D8D8870023A698 /* PhotoCatalogViewModel.swift in Sources */,
+				D70BA59023D8D8870023A698 /* PhotosCatalogViewModel.swift in Sources */,
+				D70BA59623D8FFCA0023A698 /* PhotosCatalogCoordinator.swift in Sources */,
+				D70BA59823D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift in Sources */,
 				D70BA56C23D7C4DE0023A698 /* ViewController.swift in Sources */,
+				D70BA5A223D902BA0023A698 /* UnsplashAPI.swift in Sources */,
 				D70BA58A23D857690023A698 /* PhotosCatalogViewController.swift in Sources */,
 				D70BA56823D7C4DE0023A698 /* AppDelegate.swift in Sources */,
+				D70BA5A423D902DD0023A698 /* User.swift in Sources */,
 				D70BA56A23D7C4DE0023A698 /* SceneDelegate.swift in Sources */,
 				D70BA59223D8D9080023A698 /* PhotoViewController.swift in Sources */,
 				D70BA58E23D8D87B0023A698 /* PhotoCell.swift in Sources */,
+				D70BA59E23D902910023A698 /* PhotoRealmDB.swift in Sources */,
+				D70BA5A023D902B00023A698 /* PhotoRemoteStore.swift in Sources */,
+				D70BA59C23D9027F0023A698 /* PhotoLocalStore.swift in Sources */,
+				D70BA59423D8F2EF0023A698 /* RootCoordinator.swift in Sources */,
 				D70BA58C23D8D86C0023A698 /* Photo.swift in Sources */,
+				D70BA59A23D902670023A698 /* PhotosCatalogDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

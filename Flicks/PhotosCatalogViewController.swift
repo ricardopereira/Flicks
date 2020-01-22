@@ -10,7 +10,7 @@ import UIKit
 
 class PhotosCatalogViewController: UIViewController {
 
-    let viewModel = PhotoCatalogViewModel()
+    private let viewModel: PhotosCatalogViewModel
 
     private lazy var photosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -21,6 +21,15 @@ class PhotosCatalogViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+
+    init(viewModel: PhotosCatalogViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,23 +55,6 @@ class PhotosCatalogViewController: UIViewController {
         photosCollectionView.refreshControl?.endRefreshing()
     }
 
-    func presentPhoto(photo: Photo) {
-        let activityViewController = UIActivityViewController(activityItems: [photo.url], applicationActivities: nil)
-        present(activityViewController, animated: true, completion: nil)
-    }
-
-    func menuContext(for photo: Photo) -> UIMenu {
-        let shareAction = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up")) { [weak self] action in
-            self?.presentShareActivity(for: photo)
-        }
-        return UIMenu(title: "Options", children: [shareAction])
-    }
-
-    func presentShareActivity(for photo: Photo) {
-        let activityViewController = UIActivityViewController(activityItems: [photo.url], applicationActivities: nil)
-        present(activityViewController, animated: true, completion: nil)
-    }
-
 }
 
 extension PhotosCatalogViewController: UICollectionViewDataSource {
@@ -86,13 +78,13 @@ extension PhotosCatalogViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photo = viewModel.photos[indexPath.row]
-        present(PhotoViewController(photo: photo), animated: true, completion: nil)
+        self.viewModel.coordinator.presentPhoto(photo: photo)
     }
 
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let photo = viewModel.photos[indexPath.row]
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            return self.menuContext(for: photo)
+            return self.viewModel.menuContext(for: photo)
         }
     }
 
