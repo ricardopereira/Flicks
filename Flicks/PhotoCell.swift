@@ -10,14 +10,12 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
 
-    private lazy var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var thumbnailImageView: URLImageView = {
+        let imageView = URLImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
-    private var thumbnailTask: URLSessionTask?
 
     public static var reuseIdentifier: String {
         return String(describing: self)
@@ -39,36 +37,19 @@ class PhotoCell: UICollectionViewCell {
     }
 
     deinit {
-        thumbnailTask?.cancel()
-        thumbnailTask = nil
+        thumbnailImageView.cancel()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        thumbnailImageView.cancel()
     }
 
     func configure(with photo: Photo) {
-        DispatchQueue.main.async { [weak self] in
-            self?.thumbnailTask?.cancel()
-            self?.thumbnailImageView.image = UIImage() //Placeholder()
-
-            let task = URLSession.shared.dataTask(with: photo.thumbnailUrl) { data, response, error in
-                if let error = error {
-                    print(error)
-                    return
-                }
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    print("Response error: wrong request")
-                    return
-                }
-                guard let data = data, httpResponse.statusCode == 200 else {
-                    print("Response error: unexpected response status code: \(httpResponse.statusCode))")
-                    return
-                }
-                DispatchQueue.main.async {
-                    self?.thumbnailImageView.image = UIImage(data: data)
-                }
-            }
-            task.resume()
-
-            self?.thumbnailTask = task
+        guard let thumbnailUrl = photo.thumbnailUrl else {
+            return
         }
+        thumbnailImageView.loadImage(from: thumbnailUrl, placeholder: UIImage(/*Loading Placeholder*/))
     }
 
 }

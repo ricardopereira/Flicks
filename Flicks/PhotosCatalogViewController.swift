@@ -45,6 +45,7 @@ class PhotosCatalogViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Photos Catalog"
         view.backgroundColor = .white
 
         photosCollectionView.delegate = self

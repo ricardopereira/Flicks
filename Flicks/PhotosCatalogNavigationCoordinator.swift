@@ -23,7 +23,10 @@ class PhotosCatalogNavigationCoordinator: PhotosCatalogCoordinator {
     }
 
     func presentShareActivity(for photo: Photo) {
-        let activityViewController = UIActivityViewController(activityItems: [photo.thumbnailUrl], applicationActivities: nil)
+        guard let regularUrl = photo.regularUrl else {
+            return
+        }
+        let activityViewController = UIActivityViewController(activityItems: [regularUrl], applicationActivities: nil)
         navigationController?.present(activityViewController, animated: true, completion: nil)
     }
 

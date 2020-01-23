@@ -12,8 +12,8 @@ class PhotoViewController: UIViewController {
 
     let photo: Photo
 
-    private lazy var photoImageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var photoImageView: URLImageView = {
+        let imageView = URLImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -28,6 +28,10 @@ class PhotoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    deinit {
+        photoImageView.cancel()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(photoImageView)
@@ -38,8 +42,9 @@ class PhotoViewController: UIViewController {
             photoImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
 
-        #warning("Testing purposes only")
-        photoImageView.image = UIImage(data: try! Data(contentsOf: photo.thumbnailUrl))
+        if let thumbnailUrl = photo.thumbnailUrl {
+            photoImageView.loadImage(from: thumbnailUrl, placeholder: UIImage(/*Loading Placeholder*/))
+        }
     }
 
 }

@@ -32,6 +32,7 @@
 		D70BA5AD23D905880023A698 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5A823D905880023A698 /* RxSwift.framework */; };
 		D70BA5B223D909090023A698 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5B123D909090023A698 /* RxCocoa.framework */; };
 		D76CC87B23DA460400E275C8 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5A823D905880023A698 /* RxSwift.framework */; };
+		D76CC87F23DA64EE00E275C8 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CC87E23DA64EE00E275C8 /* URLImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		D70BA5A723D905880023A698 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D70BA5A823D905880023A698 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		D70BA5B123D909090023A698 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		D76CC87E23DA64EE00E275C8 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				D70BA59123D8D9080023A698 /* PhotoViewController.swift */,
 				D70BA58D23D8D87B0023A698 /* PhotoCell.swift */,
 				D70BA58B23D8D86C0023A698 /* Photo.swift */,
+				D76CC87E23DA64EE00E275C8 /* URLImageView.swift */,
 				D70BA57023D7C4E20023A698 /* Assets.xcassets */,
 				D70BA57223D7C4E20023A698 /* LaunchScreen.storyboard */,
 				D70BA57523D7C4E20023A698 /* Info.plist */,
@@ -305,6 +308,7 @@
 				D70BA59423D8F2EF0023A698 /* RootCoordinator.swift in Sources */,
 				D70BA58C23D8D86C0023A698 /* Photo.swift in Sources */,
 				D70BA59A23D902670023A698 /* PhotosCatalogDataProvider.swift in Sources */,
+				D76CC87F23DA64EE00E275C8 /* URLImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

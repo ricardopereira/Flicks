@@ -19,17 +19,16 @@ struct Photo: Equatable, Decodable {
     var id: String
     var urls: URLOptions
 
-    #warning("Testing purposes only")
-    var thumbnailUrl: URL {
-        return URL(string: urls.thumb)!
+    var thumbnailUrl: URL? {
+        return URL(string: urls.thumb)
     }
 
-    var regularUrl: URL {
-        return URL(string: urls.regular)!
+    var regularUrl: URL? {
+        return URL(string: urls.regular)
     }
 
-    var smallUrl: URL {
-        return URL(string: urls.small)!
+    var smallUrl: URL? {
+        return URL(string: urls.small)
     }
 
     static func == (lhs: Photo, rhs: Photo) -> Bool {
