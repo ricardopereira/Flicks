@@ -15,6 +15,10 @@ class RLMPhoto: Object {
     @objc dynamic var urlRegular = ""
     @objc dynamic var urlSmall = ""
     @objc dynamic var urlThumb = ""
+
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }
 
 extension Photo {
@@ -63,7 +67,7 @@ class PhotoRealmDB: PhotoLocalStore {
                 rlmPhoto.urlRegular = photo.urls.regular
                 rlmPhoto.urlSmall = photo.urls.small
                 rlmPhoto.urlThumb = photo.urls.thumb
-                realm.add(rlmPhoto)
+                realm.add(rlmPhoto, update: .all)
             }
         }
         realm.refresh()
