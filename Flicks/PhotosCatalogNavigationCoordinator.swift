@@ -27,6 +27,13 @@ class PhotosCatalogNavigationCoordinator: PhotosCatalogCoordinator {
         navigationController?.present(activityViewController, animated: true, completion: nil)
     }
 
+    func presentError(_ error: Error, retryBlock: (() -> Void)? = nil) {
+        let alertController = UIAlertController(title: "Error occurred", message: error.localizedDescription, preferredStyle: .alert)
+        alertController.addAction(.init(title: "Retry", style: .default, handler: nil))
+        alertController.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+        navigationController?.present(alertController, animated: true, completion: nil)
+    }
+
     func logout() {
         // TODO: Login
         navigationController?.setViewControllers([], animated: true)

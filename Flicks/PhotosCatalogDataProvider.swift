@@ -32,10 +32,19 @@ class PhotosCatalogDataProvider {
     func update() {
         remoteStore.fetch(page: 1, perPage: 30, query: "office")
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] photos in
-                #warning("Testing purposes only")
-                try! self?.localStore.save(photos)
-            })
+            .subscribe(
+                onNext: { [weak self] photos in
+                    do {
+                        try self?.localStore.save(photos)
+                    }
+                    catch {
+                        self?.localStore.failure(error: error)
+                    }
+                },
+                onError: { [weak self] error in
+                    self?.localStore.failure(error: error)
+                }
+            )
             .disposed(by: disposeBag)
     }
 

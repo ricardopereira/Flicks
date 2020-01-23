@@ -21,18 +21,12 @@ class FlicksTests: XCTestCase {
     class MockCoordinator: PhotosCatalogCoordinator {
 
         // TODO
-        func pushPhoto(photo: Photo) {
-        }
-
-        func presentPhoto(photo: Photo) {
-        }
-
-        func presentShareActivity(for photo: Photo) {
-        }
-
-        func logout() {
-        }
-
+        func pushPhoto(photo: Photo) {}
+        func presentPhoto(photo: Photo) {}
+        func presentShareActivity(for photo: Photo) {}
+        func presentError(_ error: Error, retryBlock: (() -> Void)?) {}
+        func logout() {}
+        
     }
 
     class MockLocalStore: PhotoLocalStore {
@@ -47,6 +41,8 @@ class FlicksTests: XCTestCase {
         func save(_ photos: [Photo]) throws {
             self.data += photos
         }
+
+        func failure(error: Error) {}
 
     }
 

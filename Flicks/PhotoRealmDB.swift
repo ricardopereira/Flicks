@@ -73,4 +73,8 @@ class PhotoRealmDB: PhotoLocalStore {
         realm.refresh()
     }
 
+    func failure(error: Error) {
+        photos.onError(error)
+    }
+
 }

@@ -29,7 +29,7 @@ class UnsplashAPI: PhotoRemoteStore {
         request.httpMethod = "GET"
         let decoder = JSONDecoder()
         return URLSession.shared.rx.data(request: request)
-            .flatMap { data -> Observable<[Photo]> in
+            .flatMapLatest { data -> Observable<[Photo]> in
                 let photosResponse = try decoder.decode(SearchPhotosResponse.self, from: data)
                 return Observable.just(photosResponse.results)
             }

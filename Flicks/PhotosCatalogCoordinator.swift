@@ -12,5 +12,6 @@ protocol PhotosCatalogCoordinator {
     func pushPhoto(photo: Photo)
     func presentPhoto(photo: Photo)
     func presentShareActivity(for photo: Photo)
+    func presentError(_ error: Error, retryBlock: (() -> Void)?)
     func logout()
 }

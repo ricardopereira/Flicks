@@ -22,8 +22,16 @@ class PhotosCatalogViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
+    }()
+
+    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.color = .systemGray
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicatorView
     }()
 
     init(viewModel: PhotosCatalogViewModel) {
@@ -50,15 +58,36 @@ class PhotosCatalogViewController: UIViewController {
             photosCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
 
+        view.insertSubview(activityIndicatorView, aboveSubview: photosCollectionView)
+        NSLayoutConstraint.activate([
+            activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+        activityIndicatorView.startAnimating()
+
         let refreshControl = UIRefreshControl()
         photosCollectionView.refreshControl = refreshControl
         photosCollectionView.refreshControl?.addTarget(self, action: #selector(self.loadContent), for: .valueChanged)
 
         viewModel.photos
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { _ in
-                refreshControl.endRefreshing()
-            })
+            .subscribe(
+                onNext: { [weak self] photos in
+                    if photos.isEmpty {
+                        self?.viewModel.dataProvider.update()
+                    }
+                    else {
+                        self?.activityIndicatorView.stopAnimating()
+                    }
+                    refreshControl.endRefreshing()
+                },
+                onError: { [weak self] error in
+                    refreshControl.endRefreshing()
+                    self?.viewModel.coordinator.presentError(error, retryBlock: {
+                        self?.viewModel.dataProvider.update()
+                    })
+                }
+            )
             .disposed(by: disposeBag)
 
         viewModel.photos
