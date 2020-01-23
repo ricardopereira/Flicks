@@ -18,10 +18,11 @@ class UnsplashAPI: PhotoRemoteStore {
 
     let domainUrl = URL(string: "https://api.unsplash.com/search/photos")!
 
-    func fetch(page: Int, query: String) -> Observable<[Photo]> {
+    func fetch(page: Int, perPage: Int, query: String) -> Observable<[Photo]> {
         var urlComponents = URLComponents(url: domainUrl, resolvingAgainstBaseURL: true)!
         urlComponents.queryItems = [
             URLQueryItem(name: "page", value: String(page)),
+            URLQueryItem(name: "per_page", value: String(perPage)),
             URLQueryItem(name: "query", value: query),
         ]
         var request = URLRequest(url: urlComponents.url!)

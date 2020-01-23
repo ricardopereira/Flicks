@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol PhotoRemoteStore {
-    func fetch(page: Int, query: String) -> Observable<[Photo]>
+    func fetch(page: Int, perPage: Int, query: String) -> Observable<[Photo]>
 }

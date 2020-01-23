@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Photo: Decodable {
+struct Photo: Equatable, Decodable {
 
     struct URLOptions: Decodable {
         var regular: String
@@ -30,6 +30,10 @@ struct Photo: Decodable {
 
     var smallUrl: URL {
         return URL(string: urls.small)!
+    }
+
+    static func == (lhs: Photo, rhs: Photo) -> Bool {
+        return lhs.id == rhs.id
     }
 
 }

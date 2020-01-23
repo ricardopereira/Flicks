@@ -30,7 +30,7 @@ class PhotosCatalogDataProvider {
     }
 
     func update() {
-        remoteStore.fetch(page: 1, query: "office")
+        remoteStore.fetch(page: 1, perPage: 30, query: "office")
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] photos in
                 #warning("Testing purposes only")
