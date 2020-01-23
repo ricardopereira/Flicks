@@ -6,8 +6,9 @@
 //  Copyright © 2020 Ricardo Pereira. All rights reserved.
 //
 
-import Foundation
+import RxSwift
 
 protocol PhotoLocalStore {
-    func getAll()
+    var photos: PublishSubject<[Photo]> { get }
+    func save(_ photos: [Photo]) throws
 }

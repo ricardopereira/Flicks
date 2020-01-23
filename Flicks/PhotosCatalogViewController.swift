@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class PhotosCatalogViewController: UIViewController {
 
     private let viewModel: PhotosCatalogViewModel
+
+    private let disposeBag = DisposeBag()
 
     private lazy var photosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -36,7 +40,6 @@ class PhotosCatalogViewController: UIViewController {
         view.backgroundColor = .white
 
         photosCollectionView.delegate = self
-        photosCollectionView.dataSource = self
         photosCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
 
         view.addSubview(photosCollectionView)
@@ -47,29 +50,26 @@ class PhotosCatalogViewController: UIViewController {
             photosCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
 
-        photosCollectionView.refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
+        photosCollectionView.refreshControl = refreshControl
         photosCollectionView.refreshControl?.addTarget(self, action: #selector(self.loadContent), for: .valueChanged)
+
+        viewModel.photos
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                refreshControl.endRefreshing()
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.photos
+            .bind(to: photosCollectionView.rx.items(cellIdentifier: PhotoCell.reuseIdentifier, cellType: PhotoCell.self)) { row, photo, cell in
+                cell.configure(with: photo)
+            }
+            .disposed(by: disposeBag)
     }
 
     @objc func loadContent() {
-        photosCollectionView.refreshControl?.endRefreshing()
-    }
-
-}
-
-extension PhotosCatalogViewController: UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.photos.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.reuseIdentifier, for: indexPath) as? PhotoCell else {
-            return UICollectionViewCell()
-        }
-        let photo = viewModel.photos[indexPath.row]
-        cell.configure(with: photo)
-        return cell
+        viewModel.dataProvider.update()
     }
 
 }
@@ -77,12 +77,16 @@ extension PhotosCatalogViewController: UICollectionViewDataSource {
 extension PhotosCatalogViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = viewModel.photos[indexPath.row]
+        guard let photo: Photo = try? photosCollectionView.rx.model(at: indexPath) else {
+            return
+        }
         self.viewModel.coordinator.presentPhoto(photo: photo)
     }
 
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let photo = viewModel.photos[indexPath.row]
+        guard let photo: Photo = try? photosCollectionView.rx.model(at: indexPath) else {
+            return nil
+        }
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             return self.viewModel.menuContext(for: photo)
         }

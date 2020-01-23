@@ -48,7 +48,7 @@ class PhotoCell: UICollectionViewCell {
             self?.thumbnailTask?.cancel()
             self?.thumbnailImageView.image = UIImage() //Placeholder()
 
-            let task = URLSession.shared.dataTask(with: photo.url) { data, response, error in
+            let task = URLSession.shared.dataTask(with: photo.thumbnailUrl) { data, response, error in
                 if let error = error {
                     print(error)
                     return

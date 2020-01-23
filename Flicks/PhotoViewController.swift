@@ -39,7 +39,7 @@ class PhotoViewController: UIViewController {
         ])
 
         #warning("Testing purposes only")
-        photoImageView.image = UIImage(data: try! Data(contentsOf: photo.url))
+        photoImageView.image = UIImage(data: try! Data(contentsOf: photo.thumbnailUrl))
     }
 
 }
