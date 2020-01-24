@@ -24,6 +24,7 @@ class PhotosCatalogViewController: UIViewController {
         collectionView.alwaysBounceVertical = true
         collectionView.showsVerticalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.refreshControl = UIRefreshControl()
         return collectionView
     }()
 
@@ -51,7 +52,20 @@ class PhotosCatalogViewController: UIViewController {
 
         photosCollectionView.delegate = self
         photosCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
+        photosCollectionView.refreshControl?.addTarget(self, action: #selector(self.loadContent), for: .valueChanged)
 
+        setupLayout()
+        setupBindings()
+
+        viewModel.dataProvider.load()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.dataProvider.update()
+    }
+
+    private func setupLayout() {
         view.addSubview(photosCollectionView)
         NSLayoutConstraint.activate([
             photosCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -65,38 +79,39 @@ class PhotosCatalogViewController: UIViewController {
             activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicatorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
-        activityIndicatorView.startAnimating()
+    }
 
-        let refreshControl = UIRefreshControl()
-        photosCollectionView.refreshControl = refreshControl
-        photosCollectionView.refreshControl?.addTarget(self, action: #selector(self.loadContent), for: .valueChanged)
-
+    private func setupBindings() {
         viewModel.photos
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onNext: { [weak self] photos in
-                    if photos.isEmpty {
-                        self?.viewModel.dataProvider.update()
-                    }
-                    else {
-                        self?.activityIndicatorView.stopAnimating()
-                    }
-                    refreshControl.endRefreshing()
-                },
                 onError: { [weak self] error in
-                    refreshControl.endRefreshing()
-                    self?.viewModel.coordinator.presentError(error, retryBlock: {
-                        self?.viewModel.dataProvider.update()
-                    })
+                    self?.loadContentFailed(with: error)
                 }
             )
             .disposed(by: disposeBag)
+
+        viewModel.dataProvider.isIndicatingActivity
+            .bind(to: activityIndicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+
+        if let refreshControl = photosCollectionView.refreshControl {
+            viewModel.dataProvider.isRefreshing
+                .bind(to: refreshControl.rx.isRefreshing)
+                .disposed(by: disposeBag)
+        }
 
         viewModel.photos
             .bind(to: photosCollectionView.rx.items(cellIdentifier: PhotoCell.reuseIdentifier, cellType: PhotoCell.self)) { row, photo, cell in
                 cell.configure(with: photo)
             }
             .disposed(by: disposeBag)
+    }
+
+    func loadContentFailed(with error: Error) {
+        viewModel.coordinator.presentError(error, retryBlock: {
+            self.loadContent()
+        })
     }
 
     @objc func loadContent() {

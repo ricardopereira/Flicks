@@ -10,43 +10,24 @@ import Foundation
 import RealmSwift
 import RxSwift
 
-class RLMPhoto: Object {
-    @objc dynamic var id = ""
-    @objc dynamic var urlRegular = ""
-    @objc dynamic var urlSmall = ""
-    @objc dynamic var urlThumb = ""
-
-    override class func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-extension Photo {
-
-    init(realmObject photo: RLMPhoto) {
-        self.id = photo.id
-        self.urls = URLOptions(
-            regular: photo.urlRegular,
-            small: photo.urlSmall,
-            thumb: photo.urlThumb
-        )
-    }
-
-}
-
 class PhotoRealmDB: PhotoLocalStore {
 
     private let realm: Realm
-    let photos = PublishSubject<[Photo]>()
-
+    private let results: Results<PhotoRealmModel>
     private var realmObserverToken: NotificationToken?
 
-    init() {
-        realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "Debug"))
-        load()
+    let photos = PublishSubject<[Photo]>()
 
-        realmObserverToken = realm.objects(RLMPhoto.self).observe { _ in
-            self.load()
+    var isEmpty: Bool {
+        return results.isEmpty
+    }
+
+    init() {
+        realm = try! Realm()
+        results = realm.objects(PhotoRealmModel.self)
+
+        realmObserverToken = results.observe { [weak self] _ in
+            self?.publish()
         }
     }
 
@@ -55,14 +36,18 @@ class PhotoRealmDB: PhotoLocalStore {
         realmObserverToken = nil
     }
 
+    private func publish() {
+        photos.onNext(results.map(Photo.init(realmObject:)))
+    }
+
     func load() {
-        photos.onNext(realm.objects(RLMPhoto.self).map(Photo.init(realmObject:)))
+        publish()
     }
 
     func save(_ photos: [Photo]) throws {
         try realm.write {
             photos.forEach { photo in
-                let rlmPhoto = RLMPhoto()
+                let rlmPhoto = PhotoRealmModel()
                 rlmPhoto.id = photo.id
                 rlmPhoto.urlRegular = photo.urls.regular
                 rlmPhoto.urlSmall = photo.urls.small
@@ -70,7 +55,6 @@ class PhotoRealmDB: PhotoLocalStore {
                 realm.add(rlmPhoto, update: .all)
             }
         }
-        realm.refresh()
     }
 
     func failure(error: Error) {

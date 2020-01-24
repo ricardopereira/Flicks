@@ -34,8 +34,16 @@ class FlicksTests: XCTestCase {
         private(set) var photos = PublishSubject<[Photo]>()
         private(set) var data: [Photo] = [] {
             didSet {
-                photos.on(.next(data))
+                load()
             }
+        }
+
+        var isEmpty: Bool {
+            return data.isEmpty
+        }
+
+        func load() {
+            photos.on(.next(data))
         }
 
         func save(_ photos: [Photo]) throws {

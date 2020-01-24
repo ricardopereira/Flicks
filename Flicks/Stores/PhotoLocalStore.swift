@@ -10,6 +10,8 @@ import RxSwift
 
 protocol PhotoLocalStore {
     var photos: PublishSubject<[Photo]> { get }
+    var isEmpty: Bool { get }
+    func load()
     func save(_ photos: [Photo]) throws
     func failure(error: Error)
 }
