@@ -47,6 +47,7 @@ class PhotosCatalogViewController: UIViewController {
         super.viewDidLoad()
         title = "Photos Catalog"
         view.backgroundColor = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(self.logoutButtonTapped))
 
         photosCollectionView.delegate = self
         photosCollectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
@@ -100,6 +101,10 @@ class PhotosCatalogViewController: UIViewController {
 
     @objc func loadContent() {
         viewModel.dataProvider.update()
+    }
+
+    @objc func logoutButtonTapped() {
+        viewModel.logout()
     }
 
 }

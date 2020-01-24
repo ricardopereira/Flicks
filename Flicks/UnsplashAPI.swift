@@ -19,6 +19,9 @@ class UnsplashAPI: PhotoRemoteStore {
     let domainUrl = URL(string: "https://api.unsplash.com/search/photos")!
 
     func fetch(page: Int, perPage: Int, query: String) -> Observable<[Photo]> {
+        // Testing purpose only
+        let authKey = User().secret()!
+
         var urlComponents = URLComponents(url: domainUrl, resolvingAgainstBaseURL: true)!
         urlComponents.queryItems = [
             URLQueryItem(name: "page", value: String(page)),
@@ -27,9 +30,10 @@ class UnsplashAPI: PhotoRemoteStore {
         ]
         var request = URLRequest(url: urlComponents.url!)
         request.httpMethod = "GET"
+        request.addValue("Client-ID \(authKey)", forHTTPHeaderField: "Authorization")
         let decoder = JSONDecoder()
         return URLSession.shared.rx.data(request: request)
-            .flatMapLatest { data -> Observable<[Photo]> in
+            .flatMap { data -> Observable<[Photo]> in
                 let photosResponse = try decoder.decode(SearchPhotosResponse.self, from: data)
                 return Observable.just(photosResponse.results)
             }

@@ -8,9 +8,13 @@
 
 import UIKit
 
-class PhotosCatalogNavigationCoordinator: PhotosCatalogCoordinator {
+class PhotosCatalogNavCoordinator: PhotosCatalogCoordinator {
 
     weak var navigationController: UINavigationController?
+
+    init(navigationController: UINavigationController? = nil) {
+        self.navigationController = navigationController
+    }
 
     func pushPhoto(photo: Photo) {
         let photoViewController = PhotoViewController(photo: photo)
@@ -37,9 +41,12 @@ class PhotosCatalogNavigationCoordinator: PhotosCatalogCoordinator {
         navigationController?.present(alertController, animated: true, completion: nil)
     }
 
-    func logout() {
-        // TODO: Login
-        navigationController?.setViewControllers([], animated: true)
+    func setLogin() {
+        let viewModel = LoginViewModel(
+            coordinator: LoginNavCoordinator(navigationController: navigationController)
+        )
+        let loginViewController = LoginViewController(viewModel: viewModel)
+        navigationController?.setViewControllers([loginViewController], animated: true)
     }
 
 }

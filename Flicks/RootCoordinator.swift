@@ -11,22 +11,23 @@ import UIKit
 final class RootCoordinator {
 
     static func start(with user: User) -> UINavigationController {
-        #warning("Testing purposes only")
+        let navigationController = UINavigationController()
         if user.isAuthenticated {
-            let navigationCoordinator = PhotosCatalogNavigationCoordinator()
             let viewModel = PhotosCatalogViewModel(
-                coordinator: navigationCoordinator,
+                coordinator: PhotosCatalogNavCoordinator(navigationController: navigationController),
                 dataProvider: PhotosCatalogDataProvider()
             )
             let photosCatalogViewController = PhotosCatalogViewController(viewModel: viewModel)
-            let navigationController = UINavigationController(rootViewController: photosCatalogViewController)
-            navigationCoordinator.navigationController = navigationController
-            return navigationController
+            navigationController.setViewControllers([photosCatalogViewController], animated: false)
         }
         else {
-            // TODO: Login
-            return UINavigationController(rootViewController: ViewController())
+            let viewModel = LoginViewModel(
+                coordinator: LoginNavCoordinator(navigationController: navigationController)
+            )
+            let loginViewController = LoginViewController(viewModel: viewModel)
+            navigationController.setViewControllers([loginViewController], animated: false)
         }
+        return navigationController
     }
 
 }

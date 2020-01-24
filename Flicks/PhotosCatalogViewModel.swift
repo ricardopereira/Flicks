@@ -30,4 +30,9 @@ final class PhotosCatalogViewModel {
         return UIMenu(title: "Options", children: [shareAction])
     }
 
+    func logout() {
+        User().removeSecret()
+        coordinator.setLogin()
+    }
+
 }

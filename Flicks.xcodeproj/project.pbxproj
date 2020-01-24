@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D70BA56823D7C4DE0023A698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA56723D7C4DE0023A698 /* AppDelegate.swift */; };
 		D70BA56A23D7C4DE0023A698 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA56923D7C4DE0023A698 /* SceneDelegate.swift */; };
-		D70BA56C23D7C4DE0023A698 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA56B23D7C4DE0023A698 /* ViewController.swift */; };
+		D70BA56C23D7C4DE0023A698 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA56B23D7C4DE0023A698 /* LoginViewController.swift */; };
 		D70BA57123D7C4E20023A698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D70BA57023D7C4E20023A698 /* Assets.xcassets */; };
 		D70BA57423D7C4E20023A698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70BA57223D7C4E20023A698 /* LaunchScreen.storyboard */; };
 		D70BA57F23D7C4E20023A698 /* FlicksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA57E23D7C4E20023A698 /* FlicksTests.swift */; };
@@ -20,7 +20,7 @@
 		D70BA59223D8D9080023A698 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59123D8D9080023A698 /* PhotoViewController.swift */; };
 		D70BA59423D8F2EF0023A698 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59323D8F2EF0023A698 /* RootCoordinator.swift */; };
 		D70BA59623D8FFCA0023A698 /* PhotosCatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59523D8FFCA0023A698 /* PhotosCatalogCoordinator.swift */; };
-		D70BA59823D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59723D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift */; };
+		D70BA59823D8FFE50023A698 /* PhotosCatalogNavCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59723D8FFE50023A698 /* PhotosCatalogNavCoordinator.swift */; };
 		D70BA59A23D902670023A698 /* PhotosCatalogDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59923D902670023A698 /* PhotosCatalogDataProvider.swift */; };
 		D70BA59C23D9027F0023A698 /* PhotoLocalStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59B23D9027F0023A698 /* PhotoLocalStore.swift */; };
 		D70BA59E23D902910023A698 /* PhotoRealmDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70BA59D23D902910023A698 /* PhotoRealmDB.swift */; };
@@ -32,7 +32,9 @@
 		D70BA5AD23D905880023A698 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5A823D905880023A698 /* RxSwift.framework */; };
 		D70BA5B223D909090023A698 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5B123D909090023A698 /* RxCocoa.framework */; };
 		D76CC87B23DA460400E275C8 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5A823D905880023A698 /* RxSwift.framework */; };
+		D76CC87D23DA532B00E275C8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CC87C23DA532B00E275C8 /* LoginViewModel.swift */; };
 		D76CC87F23DA64EE00E275C8 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CC87E23DA64EE00E275C8 /* URLImageView.swift */; };
+		D76CC88123DA682600E275C8 /* LoginNavCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CC88023DA682600E275C8 /* LoginNavCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +51,7 @@
 		D70BA56423D7C4DE0023A698 /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70BA56723D7C4DE0023A698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D70BA56923D7C4DE0023A698 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D70BA56B23D7C4DE0023A698 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D70BA56B23D7C4DE0023A698 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D70BA57023D7C4E20023A698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D70BA57323D7C4E20023A698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D70BA57523D7C4E20023A698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		D70BA59123D8D9080023A698 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		D70BA59323D8F2EF0023A698 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		D70BA59523D8FFCA0023A698 /* PhotosCatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogCoordinator.swift; sourceTree = "<group>"; };
-		D70BA59723D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogNavigationCoordinator.swift; sourceTree = "<group>"; };
+		D70BA59723D8FFE50023A698 /* PhotosCatalogNavCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogNavCoordinator.swift; sourceTree = "<group>"; };
 		D70BA59923D902670023A698 /* PhotosCatalogDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCatalogDataProvider.swift; sourceTree = "<group>"; };
 		D70BA59B23D9027F0023A698 /* PhotoLocalStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLocalStore.swift; sourceTree = "<group>"; };
 		D70BA59D23D902910023A698 /* PhotoRealmDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRealmDB.swift; sourceTree = "<group>"; };
@@ -74,7 +76,9 @@
 		D70BA5A723D905880023A698 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D70BA5A823D905880023A698 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		D70BA5B123D909090023A698 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		D76CC87C23DA532B00E275C8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D76CC87E23DA64EE00E275C8 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
+		D76CC88023DA682600E275C8 /* LoginNavCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,11 +129,13 @@
 				D70BA56723D7C4DE0023A698 /* AppDelegate.swift */,
 				D70BA56923D7C4DE0023A698 /* SceneDelegate.swift */,
 				D70BA59323D8F2EF0023A698 /* RootCoordinator.swift */,
-				D70BA56B23D7C4DE0023A698 /* ViewController.swift */,
+				D70BA56B23D7C4DE0023A698 /* LoginViewController.swift */,
+				D76CC87C23DA532B00E275C8 /* LoginViewModel.swift */,
+				D76CC88023DA682600E275C8 /* LoginNavCoordinator.swift */,
 				D70BA58923D857690023A698 /* PhotosCatalogViewController.swift */,
 				D70BA58F23D8D8870023A698 /* PhotosCatalogViewModel.swift */,
+				D70BA59723D8FFE50023A698 /* PhotosCatalogNavCoordinator.swift */,
 				D70BA59523D8FFCA0023A698 /* PhotosCatalogCoordinator.swift */,
-				D70BA59723D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift */,
 				D70BA59923D902670023A698 /* PhotosCatalogDataProvider.swift */,
 				D70BA59B23D9027F0023A698 /* PhotoLocalStore.swift */,
 				D70BA59D23D902910023A698 /* PhotoRealmDB.swift */,
@@ -293,12 +299,14 @@
 			files = (
 				D70BA59023D8D8870023A698 /* PhotosCatalogViewModel.swift in Sources */,
 				D70BA59623D8FFCA0023A698 /* PhotosCatalogCoordinator.swift in Sources */,
-				D70BA59823D8FFE50023A698 /* PhotosCatalogNavigationCoordinator.swift in Sources */,
-				D70BA56C23D7C4DE0023A698 /* ViewController.swift in Sources */,
+				D76CC88123DA682600E275C8 /* LoginNavCoordinator.swift in Sources */,
+				D70BA59823D8FFE50023A698 /* PhotosCatalogNavCoordinator.swift in Sources */,
+				D70BA56C23D7C4DE0023A698 /* LoginViewController.swift in Sources */,
 				D70BA5A223D902BA0023A698 /* UnsplashAPI.swift in Sources */,
 				D70BA58A23D857690023A698 /* PhotosCatalogViewController.swift in Sources */,
 				D70BA56823D7C4DE0023A698 /* AppDelegate.swift in Sources */,
 				D70BA5A423D902DD0023A698 /* User.swift in Sources */,
+				D76CC87D23DA532B00E275C8 /* LoginViewModel.swift in Sources */,
 				D70BA56A23D7C4DE0023A698 /* SceneDelegate.swift in Sources */,
 				D70BA59223D8D9080023A698 /* PhotoViewController.swift in Sources */,
 				D70BA58E23D8D87B0023A698 /* PhotoCell.swift in Sources */,
