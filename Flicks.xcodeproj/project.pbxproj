@@ -31,6 +31,7 @@
 		D70BA5AB23D905880023A698 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5A723D905880023A698 /* Realm.framework */; };
 		D70BA5AD23D905880023A698 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5A823D905880023A698 /* RxSwift.framework */; };
 		D70BA5B223D909090023A698 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5B123D909090023A698 /* RxCocoa.framework */; };
+		D74D2F1723DA768D0044A5F0 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D2F1623DA768D0044A5F0 /* LoginError.swift */; };
 		D74D2F1923DA83A90044A5F0 /* PhotoRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74D2F1823DA83A90044A5F0 /* PhotoRealmModel.swift */; };
 		D76CC87B23DA460400E275C8 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70BA5A823D905880023A698 /* RxSwift.framework */; };
 		D76CC87D23DA532B00E275C8 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76CC87C23DA532B00E275C8 /* LoginViewModel.swift */; };
@@ -77,6 +78,7 @@
 		D70BA5A723D905880023A698 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D70BA5A823D905880023A698 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		D70BA5B123D909090023A698 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		D74D2F1623DA768D0044A5F0 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		D74D2F1823DA83A90044A5F0 /* PhotoRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRealmModel.swift; sourceTree = "<group>"; };
 		D76CC87C23DA532B00E275C8 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D76CC87E23DA64EE00E275C8 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				D70BA56B23D7C4DE0023A698 /* LoginViewController.swift */,
 				D76CC87C23DA532B00E275C8 /* LoginViewModel.swift */,
 				D76CC88023DA682600E275C8 /* LoginNavCoordinator.swift */,
+				D74D2F1623DA768D0044A5F0 /* LoginError.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				D70BA58C23D8D86C0023A698 /* Photo.swift in Sources */,
 				D70BA59A23D902670023A698 /* PhotosCatalogDataProvider.swift in Sources */,
 				D76CC87F23DA64EE00E275C8 /* URLImageView.swift in Sources */,
+				D74D2F1723DA768D0044A5F0 /* LoginError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

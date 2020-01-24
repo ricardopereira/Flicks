@@ -65,7 +65,11 @@ class LoginViewController: UIViewController {
     }
 
     @objc func loginButtonTapped() {
-        viewModel.login(secret: secretTextField.text ?? "")
+        guard let secret = secretTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !secret.isEmpty else {
+            viewModel.coordinator.presentError(LoginError.missingSecret)
+            return
+        }
+        viewModel.login(secret: secret)
     }
 
 }
