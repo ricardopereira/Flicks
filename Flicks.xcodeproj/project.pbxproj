@@ -129,23 +129,10 @@
 				D70BA56723D7C4DE0023A698 /* AppDelegate.swift */,
 				D70BA56923D7C4DE0023A698 /* SceneDelegate.swift */,
 				D70BA59323D8F2EF0023A698 /* RootCoordinator.swift */,
-				D70BA56B23D7C4DE0023A698 /* LoginViewController.swift */,
-				D76CC87C23DA532B00E275C8 /* LoginViewModel.swift */,
-				D76CC88023DA682600E275C8 /* LoginNavCoordinator.swift */,
-				D70BA58923D857690023A698 /* PhotosCatalogViewController.swift */,
-				D70BA58F23D8D8870023A698 /* PhotosCatalogViewModel.swift */,
-				D70BA59723D8FFE50023A698 /* PhotosCatalogNavCoordinator.swift */,
-				D70BA59523D8FFCA0023A698 /* PhotosCatalogCoordinator.swift */,
-				D70BA59923D902670023A698 /* PhotosCatalogDataProvider.swift */,
-				D70BA59B23D9027F0023A698 /* PhotoLocalStore.swift */,
-				D70BA59D23D902910023A698 /* PhotoRealmDB.swift */,
-				D70BA59F23D902B00023A698 /* PhotoRemoteStore.swift */,
-				D70BA5A123D902BA0023A698 /* UnsplashAPI.swift */,
-				D70BA5A323D902DD0023A698 /* User.swift */,
-				D70BA59123D8D9080023A698 /* PhotoViewController.swift */,
-				D70BA58D23D8D87B0023A698 /* PhotoCell.swift */,
-				D70BA58B23D8D86C0023A698 /* Photo.swift */,
-				D76CC87E23DA64EE00E275C8 /* URLImageView.swift */,
+				D76CC88A23DA746F00E275C8 /* Login */,
+				D76CC88423DA744000E275C8 /* PhotosCatalog */,
+				D76CC88323DA743A00E275C8 /* Stores */,
+				D76CC88223DA742800E275C8 /* Helpers */,
 				D70BA57023D7C4E20023A698 /* Assets.xcassets */,
 				D70BA57223D7C4E20023A698 /* LaunchScreen.storyboard */,
 				D70BA57523D7C4E20023A698 /* Info.plist */,
@@ -171,6 +158,91 @@
 				D70BA5A823D905880023A698 /* RxSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D76CC88223DA742800E275C8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D76CC87E23DA64EE00E275C8 /* URLImageView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D76CC88323DA743A00E275C8 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				D70BA59B23D9027F0023A698 /* PhotoLocalStore.swift */,
+				D70BA59F23D902B00023A698 /* PhotoRemoteStore.swift */,
+				D70BA59D23D902910023A698 /* PhotoRealmDB.swift */,
+				D70BA5A123D902BA0023A698 /* UnsplashAPI.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		D76CC88423DA744000E275C8 /* PhotosCatalog */ = {
+			isa = PBXGroup;
+			children = (
+				D76CC88923DA746700E275C8 /* Models */,
+				D76CC88823DA745800E275C8 /* Providers */,
+				D76CC88723DA745200E275C8 /* Coordinators */,
+				D76CC88623DA744E00E275C8 /* Views */,
+				D76CC88523DA744800E275C8 /* ViewModels */,
+			);
+			path = PhotosCatalog;
+			sourceTree = "<group>";
+		};
+		D76CC88523DA744800E275C8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D70BA58F23D8D8870023A698 /* PhotosCatalogViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D76CC88623DA744E00E275C8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D70BA58923D857690023A698 /* PhotosCatalogViewController.swift */,
+				D70BA59123D8D9080023A698 /* PhotoViewController.swift */,
+				D70BA58D23D8D87B0023A698 /* PhotoCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D76CC88723DA745200E275C8 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				D70BA59523D8FFCA0023A698 /* PhotosCatalogCoordinator.swift */,
+				D70BA59723D8FFE50023A698 /* PhotosCatalogNavCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		D76CC88823DA745800E275C8 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				D70BA59923D902670023A698 /* PhotosCatalogDataProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		D76CC88923DA746700E275C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D70BA58B23D8D86C0023A698 /* Photo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D76CC88A23DA746F00E275C8 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D70BA5A323D902DD0023A698 /* User.swift */,
+				D70BA56B23D7C4DE0023A698 /* LoginViewController.swift */,
+				D76CC87C23DA532B00E275C8 /* LoginViewModel.swift */,
+				D76CC88023DA682600E275C8 /* LoginNavCoordinator.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
